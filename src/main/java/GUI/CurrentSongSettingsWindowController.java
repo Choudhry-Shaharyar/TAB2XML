@@ -13,7 +13,7 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import utility.GuitarUtils;
 import utility.Settings;
-
+// Shaharyar
 public class CurrentSongSettingsWindowController extends Application {
 
 	private MainViewController mvc;
