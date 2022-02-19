@@ -19,6 +19,7 @@ import org.fxmisc.richtext.CodeArea;
 import org.fxmisc.richtext.LineNumberFactory;
 import org.fxmisc.richtext.model.StyleSpans;
 
+import PDFUtilities.pdfutilities;
 import converter.Converter;
 import converter.measure.TabMeasure;
 import javafx.application.Application;
@@ -308,6 +309,19 @@ public class MainViewController extends Application {
 	private void previewButtonHandle() throws IOException {
 		System.out.println("Preview Button Clicked!");
 		// converter.getMusicXML() returns the MusicXML output as a String
+		Parent root;
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("GUI/previewMusicSheet.fxml"));
+			root = loader.load();
+			pdfutilities.start();
+//			ShowMXLController controller = loader.getController();
+//			controller.setMainViewController(this);
+//			controller.update();
+//			convertWindow = this.openNewWindow(root, "Sheet Music Preview");
+		} catch (IOException e) {
+			Logger logger = Logger.getLogger(getClass().getName());
+			logger.log(Level.SEVERE, "Failed to create new Window.", e);
+		}
 	}
 
 	public void refresh() {
