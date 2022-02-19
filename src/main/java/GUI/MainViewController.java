@@ -323,7 +323,34 @@ public class MainViewController extends Application {
 			logger.log(Level.SEVERE, "Failed to create new Window.", e);
 		}
 	}
+	
+	@FXML
+	private void playButton() throws IOException {
+		System.out.println("Play Button CLicked!");
+		Parent root;
+			FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("GUI/MusicPlayer.fxml"));
+			root = loader.load();
+			openNewWindow(root,  "Music Player");
 
+		System.out.println(converter.getMusicXML());
+//		returns the MusicXML output as a String
+		Parent root;
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("GUI/previewMusicSheet.fxml"));
+			root = loader.load();
+			pdfutilities.start();
+//			ShowMXLController controller = loader.getController();
+//			controller.setMainViewController(this);
+//			controller.update();
+//			convertWindow = this.openNewWindow(root, "Sheet Music Preview");
+		} catch (IOException e) {
+			Logger logger = Logger.getLogger(getClass().getName());
+			logger.log(Level.SEVERE, "Failed to create new Window.", e);
+		}
+	}
+
+	
+	
 	public void refresh() {
         mainText.replaceText(new IndexRange(0, mainText.getText().length()), mainText.getText()+" ");
     }
