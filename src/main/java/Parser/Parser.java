@@ -47,7 +47,7 @@ public class Parser {
 
         wPart wPartOne = new wPart(partTag.getAttributeValue("id"));
         ArrayList<wMeasure> wMeasureList = new ArrayList<>();
-        for (int i = 0; i < measureTagsList.size()-1; i++)
+        for (int i = 0; i < measureTagsList.size(); i++)
         {
             //Code below handles the following attributes of Measure:
             //Divisions - Key - Time - Clef -
@@ -143,9 +143,21 @@ public class Parser {
                 }
 
                 catch (Exception e){}
-                // V V V
-                // Don't forget to add <notations> handling
-                // ^ ^ ^
+
+                try
+                {
+                    Element notationsTag = noteTag.getChild("notations");
+                    Element technicalTag = notationsTag.getChild("technical");
+                    Element stringTag = technicalTag.getChild("string");
+                    Element fretTag = technicalTag.getChild("fret");
+                    String noteString = stringTag.getValue();
+                    String fret = fretTag.getValue();
+
+                    newWNote.setNoteString(Integer.parseInt(noteString));
+                    newWNote.setFret(Integer.parseInt(fret));
+
+                }
+                catch (Exception e){}
 
                 notesList.add(newWNote);
             }
