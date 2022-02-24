@@ -307,7 +307,25 @@ public class MainViewController extends Application {
 	@FXML
 	private void previewButtonHandle() throws IOException {
 		System.out.println("Preview Button Clicked!");
-		// converter.getMusicXML() returns the MusicXML output as a String
+		Parent root;
+			FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("GUI/MusicPlayer.fxml"));
+			root = loader.load();
+			openNewWindow(root,  "Music Player");
+
+		System.out.println(converter.getMusicXML());
+//		returns the MusicXML output as a String
+	}
+	
+	@FXML
+	private void playButton() throws IOException {
+		System.out.println("Preview Button Clicked!");
+		Parent root;
+			FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("GUI/MusicPlayer.fxml"));
+			root = loader.load();
+			openNewWindow(root,  "Music Player");
+
+		System.out.println(converter.getMusicXML());
+//		returns the MusicXML output as a String
 	}
 
 	public void refresh() {
