@@ -63,6 +63,7 @@ public class mxmlPlayer {
         {
             musicScript += this.readableMusic.get(i) + " | ";
         }
+
         musicScript = "I[GUITAR] " + musicScript;
         System.out.println(musicScript);
         player.play(musicScript);
