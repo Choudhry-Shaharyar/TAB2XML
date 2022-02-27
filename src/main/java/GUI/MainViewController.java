@@ -19,7 +19,6 @@ import org.fxmisc.richtext.CodeArea;
 import org.fxmisc.richtext.LineNumberFactory;
 import org.fxmisc.richtext.model.StyleSpans;
 
-import PDFUtilities.pdfutilities;
 import converter.Converter;
 import converter.measure.TabMeasure;
 import javafx.application.Application;
@@ -68,6 +67,7 @@ public class MainViewController extends Application {
 	@FXML  Button saveMXLButton;
 	@FXML  Button showMXLButton;
 	@FXML  Button previewButton;
+	@FXML  Button previewMusicPlayer;
 	@FXML  Button goToline;
 	@FXML  ComboBox<String> cmbScoreType;
 
@@ -304,40 +304,23 @@ public class MainViewController extends Application {
 			logger.log(Level.SEVERE, "Failed to create new Window.", e);
 		}
 	}
-
 	@FXML
 	private void previewButtonHandle() throws IOException {
-		System.out.println("Preview Button Clicked!");
-		// converter.getMusicXML() returns the MusicXML output as a String
-		Parent root;
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("GUI/previewMusicSheet.fxml"));
-			root = loader.load();
-			pdfutilities.start();
-//			ShowMXLController controller = loader.getController();
-//			controller.setMainViewController(this);
-//			controller.update();
-//			convertWindow = this.openNewWindow(root, "Sheet Music Preview");
-		} catch (IOException e) {
-			Logger logger = Logger.getLogger(getClass().getName());
-			logger.log(Level.SEVERE, "Failed to create new Window.", e);
-		}
+// mlc 
 	}
-	
+
 	@FXML
-	private void playButton() throws IOException {
+	private void previewMusicPlayer() throws IOException {
 		System.out.println("Preview Button Clicked!");
-        Parent root;
-            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("GUI/MusicPlayer.fxml"));
-            root = loader.load();
-            openNewWindow(root,  "Music Player");
-
-        System.out.println(converter.getMusicXML());
-//        returns the MusicXML output as a String
+		Parent root;
+			FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("GUI/MusicPlayer.fxml"));
+			root = loader.load();
+			MusicPlayerController controller = loader.getController();
+			controller.setMainViewController(this);
+			controller.update();
+			openNewWindow(root,  "Music Player");
 	}
 
-	
-	
 	public void refresh() {
         mainText.replaceText(new IndexRange(0, mainText.getText().length()), mainText.getText()+" ");
     }
