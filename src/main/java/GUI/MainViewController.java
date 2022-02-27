@@ -306,7 +306,7 @@ public class MainViewController extends Application {
 	}
 	@FXML
 	private void previewButtonHandle() throws IOException {
-
+// mlc 
 	}
 
 	@FXML
@@ -315,6 +315,9 @@ public class MainViewController extends Application {
 		Parent root;
 			FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("GUI/MusicPlayer.fxml"));
 			root = loader.load();
+			MusicPlayerController controller = loader.getController();
+			controller.setMainViewController(this);
+			controller.update();
 			openNewWindow(root,  "Music Player");
 	}
 

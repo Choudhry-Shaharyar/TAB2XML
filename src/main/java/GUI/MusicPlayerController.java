@@ -2,6 +2,7 @@ package GUI;
 
 import java.io.IOException;
 
+import org.fxmisc.richtext.CodeArea;
 import org.fxmisc.richtext.LineNumberFactory;
 
 import converter.Converter;
@@ -14,8 +15,13 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.stage.Stage;
+import models.Creator;
 
 public class MusicPlayerController extends Application {
+	
+    private MainViewController mvc;
+
+
 	@FXML  Button playMusic;
 	@FXML  Button stopMusic;
 	@FXML  Button goBackMeasure;
@@ -23,9 +29,17 @@ public class MusicPlayerController extends Application {
 	@FXML  Button pauseAndPlay;
 	@FXML  Slider volumeControl;
 	
+	public Creator x;
+
+	
 	@FXML 
 	public void initialize() {
 		volumeControl.setValue(100);		
+	}
+	
+	public void setMainViewController(MainViewController mainViewController) {
+    	mvc = mainViewController;
+	
 	}
 
 	@FXML
@@ -56,6 +70,12 @@ public class MusicPlayerController extends Application {
 		
 	}
 // 
+
+
+
+	public void update() {
+	
+	}
 	
 	
 //	#playMusic
