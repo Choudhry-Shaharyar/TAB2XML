@@ -43,6 +43,11 @@ import javafx.stage.Window;
 import utility.Range;
 import utility.Settings;
 
+//Parser and Player Modules
+import Components.*;
+import XMLPlayer.*;
+import Parser.*;
+
 public class MainViewController extends Application {
 	
 	private Preferences prefs;
@@ -312,6 +317,7 @@ public class MainViewController extends Application {
 	@FXML
 	private void previewMusicPlayer() throws IOException {
 		System.out.println("Preview Button Clicked!");
+
 		Parent root;
 			FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("GUI/MusicPlayer.fxml"));
 			root = loader.load();

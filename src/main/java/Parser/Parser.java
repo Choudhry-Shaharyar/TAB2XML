@@ -9,10 +9,7 @@ import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.StringReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -169,12 +166,12 @@ public class Parser {
         wPartOne.setMeasures(wMeasureList);
         this.mainWPart = wPartOne;
         //File output = new File("/Users/walido/Documents/University/2nd Year/2nd Year - Winter 2022/EECS 2311/Project Components/Parser Tests/output.txt");
-        File output = new File("output.txt");
+        //File output = new File("output.txt");
+        Writer output = new FileWriter("output.txt", false);
         try {
-            FileWriter writer = new FileWriter(output);
-            writer.write(wPartOne.toString());
-            writer.flush();
-            writer.close();
+            output.write(wPartOne.toString());
+            output.flush();
+            output.close();
         }
         catch(IOException e){
             System.out.println(e);

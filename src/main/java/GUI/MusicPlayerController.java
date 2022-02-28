@@ -2,6 +2,8 @@ package GUI;
 
 import java.io.IOException;
 
+import Parser.Parser;
+import XMLPlayer.mxmlPlayer;
 import org.fxmisc.richtext.CodeArea;
 import org.fxmisc.richtext.LineNumberFactory;
 
@@ -39,12 +41,16 @@ public class MusicPlayerController extends Application {
 	
 	public void setMainViewController(MainViewController mainViewController) {
     	mvc = mainViewController;
-	
 	}
 
 	@FXML
 	private void playMusic() throws IOException {
 		System.out.println("play music Button Clicked!");
+		Parser xmlParse = new Parser(mvc.converter.getMusicXML());
+		xmlParse.createParts();
+		mxmlPlayer xmlPlayer = new mxmlPlayer(xmlParse.getPart());
+		xmlPlayer.createReadableMusic();
+		xmlPlayer.playMusic();
 	}
 	@FXML
 	private void pauseMusic() throws IOException {
