@@ -310,6 +310,7 @@ public class MainViewController extends Application {
 	}
 
 	@FXML
+<<<<<<< HEAD
 	private void previewMusicPlayer() throws IOException {
 		System.out.println("Preview Button Clicked!");
 		Parent root;
@@ -319,6 +320,17 @@ public class MainViewController extends Application {
 			controller.setMainViewController(this);
 			controller.update();
 			openNewWindow(root,  "Music Player");
+=======
+	private void playButton() throws IOException {
+		System.out.println("Preview Button Clicked!");
+        Parent root;
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("GUI/MusicPlayer.fxml"));
+            root = loader.load();
+            openNewWindow(root,  "Music Player");
+
+        System.out.println(converter.getMusicXML());
+//        returns the MusicXML output as a String
+>>>>>>> branch 'prototype' of https://github.com/walido2001/TAB2XML.git
 	}
 
 	public void refresh() {

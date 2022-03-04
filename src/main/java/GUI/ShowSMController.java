@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 
+<<<<<<< HEAD
 
 import java.io.File;
 import java.util.regex.Matcher;
@@ -36,6 +37,8 @@ public class ShowSMController extends Application {
     private MainViewController mvc;
 	public Highlighter highlighter;
 
+=======
+>>>>>>> branch 'prototype' of https://github.com/walido2001/TAB2XML.git
 	@FXML public CodeArea mxlText;
 	@FXML TextField gotoMeasureField;
 	@FXML Button goToline;
