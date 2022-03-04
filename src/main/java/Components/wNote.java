@@ -1,3 +1,4 @@
+
 package Components;
 
 public class wNote {
@@ -9,6 +10,9 @@ public class wNote {
     int duration;
     int voice;
     String type;
+
+    int noteString;
+    int fret;
 
     public wNote()
     {
@@ -69,6 +73,25 @@ public class wNote {
         return this.type;
     }
 
+    public void setNoteString(int noteString)
+    {
+        this.noteString = noteString;
+    }
+
+    public int getNoteString()
+    {
+        return this.noteString;
+    }
+
+    public void setFret(int fret)
+    {
+        this.fret = fret;
+    }
+
+    public int getFret()
+    {
+        return this.fret;
+    }
 
     public String toString()
     {
@@ -80,6 +103,8 @@ public class wNote {
         content += "Duration: " + this.duration + "\n";
         content += "Voice: " + this.voice + "\n";
         content += "Type: " + this.type + "\n";
+        content += "note String: " + this.noteString + "\n";
+        content += "Fret: " + this.fret + "\n";
         content += "== \n";
 
         return content;

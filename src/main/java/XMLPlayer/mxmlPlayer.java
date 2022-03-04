@@ -1,3 +1,4 @@
+
 package XMLPlayer;
 
 import Components.wMeasure;
@@ -34,11 +35,11 @@ public class mxmlPlayer {
     public void createReadableMusic()
     {
         ArrayList<wMeasure> measuresList = mainWPart.getMeasures();
-        for (int mi=0; mi < measuresList.size()-1; mi++)
+        for (int mi=0; mi < measuresList.size(); mi++)
         {
             String readableMeasure = "";
             ArrayList<wNote> notesList = measuresList.get(mi).getNotes();
-            for (int ni = 0; ni < notesList.size() - 1; ni++) {
+            for (int ni = 0; ni < notesList.size(); ni++) {
                 wNote currentWNote = notesList.get(ni);
                 if(currentWNote.getChord() == false)
                 {
@@ -64,7 +65,7 @@ public class mxmlPlayer {
             musicScript += this.readableMusic.get(i) + " | ";
         }
 
-        musicScript = "I[GUITAR] " + musicScript;
+        //musicScript = "I[GUITAR] " + musicScript;
         System.out.println(musicScript);
         player.play(musicScript);
     }
