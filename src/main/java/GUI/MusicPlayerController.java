@@ -16,6 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import models.Creator;
 
@@ -29,18 +30,28 @@ public class MusicPlayerController extends Application {
 	@FXML  Button goBackMeasure;
 	@FXML  Button goForwardMeasure;
 	@FXML  Button pauseAndPlay;
-	@FXML  Slider volumeControl;
-	
+	@FXML TextArea musicInfoTextArea;
 	public Creator x;
+	String info;
 
 	
 	@FXML 
-	public void initialize() {
-		volumeControl.setValue(100);		
+	public void initialize() throws IOException {
+	
+
 	}
 	
-	public void setMainViewController(MainViewController mainViewController) {
+	public void setMainViewController(MainViewController mainViewController) throws IOException {
     	mvc = mainViewController;
+    	addInfo();
+	}
+	
+	private void addInfo() throws IOException {
+		
+	Parser xmlParse = new Parser(mvc.converter.getMusicXML());
+	xmlParse.createParts();
+	info = xmlParse.getPart().toString();
+	musicInfoTextArea.setText(info);
 	}
 
 	@FXML
@@ -51,6 +62,8 @@ public class MusicPlayerController extends Application {
 		mxmlPlayer xmlPlayer = new mxmlPlayer(xmlParse.getPart());
 		xmlPlayer.createReadableMusic();
 		xmlPlayer.playMusic();
+		
+
 	}
 	@FXML
 	private void pauseMusic() throws IOException {
