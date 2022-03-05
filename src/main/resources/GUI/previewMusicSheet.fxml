@@ -9,14 +9,15 @@
 <?import javafx.scene.layout.HBox?>
 <?import org.fxmisc.flowless.VirtualizedScrollPane?>
 <?import org.fxmisc.richtext.CodeArea?>
+<?import javafx.scene.control.TextArea?>
 
-<BorderPane fx:id="borderPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="450.0" minWidth="640.0" prefHeight="700.0" prefWidth="1000.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ShowMXLController">
+<BorderPane fx:id="borderPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="450.0" minWidth="640.0" prefHeight="700.0" prefWidth="1000.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ShowSMController">
     <center>
         <AnchorPane prefHeight="200.0" prefWidth="666.0" BorderPane.alignment="CENTER">
             <children>
                 <VirtualizedScrollPane layoutX="693.0" layoutY="70.0" prefHeight="507.0" prefWidth="898.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="32.0" BorderPane.alignment="CENTER">
                     <content>
-                        <CodeArea fx:id="mxlText" stylesheets="@text_input_styles.css" />
+                        <CodeArea fx:id="smText" stylesheets="@TabMusicStyle.css" />
                     </content>
                 </VirtualizedScrollPane>
                 <AnchorPane layoutX="12.0" layoutY="614.0" prefHeight="52.0" prefWidth="977.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0">

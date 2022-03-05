@@ -167,15 +167,15 @@ public class Parser {
         this.mainWPart = wPartOne;
         //File output = new File("/Users/walido/Documents/University/2nd Year/2nd Year - Winter 2022/EECS 2311/Project Components/Parser Tests/output.txt");
         //File output = new File("output.txt");
-        Writer output = new FileWriter("output.txt", false);
-        try {
-            output.write(wPartOne.toString());
-            output.flush();
-            output.close();
-        }
-        catch(IOException e){
-            System.out.println(e);
-        }
+//        Writer output = new FileWriter("output.txt", false);
+//        try {
+//            output.write(wPartOne.toString());
+//            output.flush();
+//            output.close();
+//        }
+//        catch(IOException e){
+//            System.out.println(e);
+//        }
 
     }
 

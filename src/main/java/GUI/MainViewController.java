@@ -47,6 +47,7 @@ import utility.Settings;
 import Components.*;
 import XMLPlayer.*;
 import Parser.*;
+import SMWriter.partToString;
 
 public class MainViewController extends Application {
 	
@@ -311,13 +312,17 @@ public class MainViewController extends Application {
 	}
 	@FXML
 	private void previewButtonHandle() throws IOException {
-// mlc 
+		Parent root;
+		FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("GUI/previewMusicSheet.fxml"));
+		root = loader.load();
+		ShowSMController controller = loader.getController();
+		controller.setMainViewController(this);
+		controller.update();
+		openNewWindow(root,  "Preview Sheet Music"); 
 	}
 
 	@FXML
 	private void previewMusicPlayer() throws IOException {
-		System.out.println("Preview Button Clicked!");
-
 		Parent root;
 			FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("GUI/MusicPlayer.fxml"));
 			root = loader.load();
