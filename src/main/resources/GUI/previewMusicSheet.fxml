@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -7,25 +12,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import org.fxmisc.flowless.VirtualizedScrollPane?>
-<?import org.fxmisc.richtext.CodeArea?>
 <?import javafx.scene.control.TextArea?>
 
-<BorderPane fx:id="borderPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="450.0" minWidth="640.0" prefHeight="700.0" prefWidth="1000.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ShowSMController">
+<BorderPane fx:id="borderPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="300.0" minWidth="640.0" prefHeight="300.0" prefWidth="1000.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.ShowSMController">
     <center>
-        <AnchorPane prefHeight="200.0" prefWidth="666.0" BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="499.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
             <children>
-                <VirtualizedScrollPane layoutX="693.0" layoutY="70.0" prefHeight="507.0" prefWidth="898.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="32.0" BorderPane.alignment="CENTER">
-                    <content>
-                        <CodeArea fx:id="smText" stylesheets="@TabMusicStyle.css" />
-                    </content>
-                </VirtualizedScrollPane>
-                <AnchorPane layoutX="12.0" layoutY="614.0" prefHeight="52.0" prefWidth="977.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0">
+                <AnchorPane layoutX="13.0" layoutY="223.0" prefHeight="66.0" prefWidth="976.0" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="11.0">
                     <children>
                   <HBox layoutY="11.0" spacing="5.0" AnchorPane.rightAnchor="0.0">
-                     <children>
-                        <Button fx:id="saveMXLButton" disable="false" layoutX="15.0" layoutY="15.0" mnemonicParsing="false" onAction="#saveMXLButtonHandle" text="Save Sheet Music" />
-                     </children>
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
@@ -35,8 +30,10 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                   </HBox>
+                  <Button fx:id="saveMXLButton" disable="true" layoutX="820.0" layoutY="18.0" mnemonicParsing="false" onAction="#saveMXLButtonHandle" text="Save Sheet Music" />
                     </children>
                 </AnchorPane>
+            <TextArea fx:id="smText" layoutX="23.0" layoutY="30.0" prefHeight="200.0" prefWidth="954.0" />
             </children>
         </AnchorPane>
     </center>

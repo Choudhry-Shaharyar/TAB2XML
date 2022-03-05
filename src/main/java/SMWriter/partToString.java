@@ -6,12 +6,12 @@ import Components.wPart;
 
 public class partToString {
 	wPart part;
-	String line1 ="  \\_T_";
-	String line2 ="  |___";
-	String line3 ="  |_A_";
-	String line4 ="  |___";
-	String line5 ="  |_B_";
-	String line6 ="  /___";
+	String line1 ="  __T_";
+	String line2 ="  ____";
+	String line3 ="  __A_";
+	String line4 ="  ____";
+	String line5 ="  __B_";
+	String line6 ="  ____";
 	
 	public partToString(wPart part) {
 		this.part=part;
@@ -19,14 +19,6 @@ public class partToString {
 	
 	public void generateString() {
 		for(wMeasure mea:part.getMeasures()) {
-//			if(i>1) {
-//				line1+="|";
-//				line2+="|";
-//				line3+="|";
-//				line4+="|";
-//				line5+="|";
-//				line6+="|";
-//			}
 			for(int k=0;k<mea.getNotes().size();k++) {
 				wNote not = mea.getNotes().get(k);
 				int l = mea.getDivisions();
@@ -50,7 +42,8 @@ public class partToString {
 					System.out.println(not.getType());
 				}
 				char a[] = {'x','x','x','x','x','x'};
-				a[not.getNoteString()-1] = (char) (not.getFret()+48);
+				if(not.getFret()>=0 && not.getFret()<=9) a[not.getNoteString()-1] = (char) (not.getFret()+48);
+				else if(not.getFret()>=10 && not.getFret()<=20)	a[not.getNoteString()-1] = (char) (not.getFret()-10+39);
 				for(int j=0;j<6;j++) {
 					if(a[j]=='x') {
 						a[j]='_';
@@ -59,7 +52,8 @@ public class partToString {
 			try{
 				wNote next = mea.getNotes().get(k+1);
 				if(next.getChord()==true) {
-					a[next.getNoteString()-1]=(char) (next.getFret()+48);
+					if(next.getFret()>=0 && next.getFret()<=9) a[next.getNoteString()-1] = (char) (next.getFret()+48);
+					else if(next.getFret()>=10 && next.getFret()<=20)	a[next.getNoteString()-1] = (char) (next.getFret()-10+39);
 					k++;
 				}
 			}
@@ -78,6 +72,12 @@ public class partToString {
 			line6+="/__";
 			
 		}
+		line1 = line1.substring(0, line1.length()-2);
+		line2 = line2.substring(0, line2.length()-2);
+		line3 = line3.substring(0, line3.length()-2);
+		line4 = line4.substring(0, line4.length()-2);
+		line5 = line5.substring(0, line5.length()-2);
+		line6 = line6.substring(0, line6.length()-2);
 	}
 	
 	private void writeLine(char[] a) {
@@ -110,6 +110,6 @@ public class partToString {
 	}
 	
 	public String getString() {
-		return line1+"\n"+line2+"\n"+line3+"\n"+line4+"\n"+line5+"\n"+line6+"\n";
+		return line1+"\n"+line2+"\n"+line3+"\n"+line4+"\n"+line5+"\n"+line6;
 	}
 }

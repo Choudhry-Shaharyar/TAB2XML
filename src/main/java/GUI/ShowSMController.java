@@ -2,19 +2,14 @@ package GUI;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import org.fxmisc.richtext.CodeArea;
-import org.fxmisc.richtext.LineNumberFactory;
 
 import Parser.Parser;
 import SMWriter.partToString;
 import javafx.application.Application;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class ShowSMController extends Application {
@@ -23,13 +18,14 @@ public class ShowSMController extends Application {
     private MainViewController mvc;
 	public Highlighter highlighter;
 
-	@FXML public CodeArea smText;
+	@FXML public TextArea smText;
+	@FXML public ScrollPane scPane;
 
 	public ShowSMController() {}
 	
 	@FXML 
 	public void initialize() {
-		smText.setParagraphGraphicFactory(LineNumberFactory.get(smText));
+//		smText.setParagraphGraphicFactory(LineNumberFactory.get(smText));
 	}
 
     public void setMainViewController(MainViewController mvcInput) {
@@ -41,10 +37,9 @@ public class ShowSMController extends Application {
 		par.createParts();
 		partToString x = new partToString(par.getPart());
 		x.generateString();
-		System.out.println("STAGNANE");
-		smText.replaceText(x.getString());
-		smText.moveTo(0);
-		smText.requestFollowCaret();
+		Font custom = Font.loadFont("file:src/main/resources/fonts/TABMusic.otf", 20);
+		smText.setFont(custom);
+		smText.appendText(x.getString());
         smText.requestFocus();
         smText.setEditable(false);
 	}
