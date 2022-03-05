@@ -6,12 +6,12 @@ import Components.wPart;
 
 public class partToString {
 	wPart part;
-	String line1 ="  __T_";
-	String line2 ="  ____";
-	String line3 ="  __A_";
-	String line4 ="  ____";
-	String line5 ="  __B_";
-	String line6 ="  ____";
+	String line1 ="  _T_";
+	String line2 ="  ___";
+	String line3 ="  _A_";
+	String line4 ="  ___";
+	String line5 ="  _B_";
+	String line6 ="  ___";
 	
 	public partToString(wPart part) {
 		this.part=part;
