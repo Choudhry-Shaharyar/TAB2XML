@@ -32,6 +32,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.IndexRange;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -39,6 +40,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.stage.Window;
 import utility.Range;
 import utility.Settings;
@@ -323,6 +325,16 @@ public class MainViewController extends Application {
 
 	@FXML
 	private void previewMusicPlayer() throws IOException {
+		if(mainText.getText().strip().equals("")) {
+			System.out.println("EMPTY CODE");
+//            JOptionPane.showMessageDialog(null, "Please enter valid music tab");
+			Alert alert = new Alert(Alert.AlertType.WARNING);
+			alert.initStyle(StageStyle.UTILITY);
+			alert.setTitle("No Input");
+			alert.setHeaderText(null);
+			alert.setContentText("Please enter valid music tab");
+			alert.showAndWait();
+        } else { 
 		Parent root;
 			FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("GUI/MusicPlayer.fxml"));
 			root = loader.load();
@@ -330,6 +342,7 @@ public class MainViewController extends Application {
 			controller.setMainViewController(this);
 			controller.update();
 			openNewWindow(root,  "Music Player");
+        }
 	}
 
 	public void refresh() {
