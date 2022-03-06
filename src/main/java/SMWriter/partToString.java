@@ -51,10 +51,12 @@ public class partToString {
 				}
 			try{
 				wNote next = mea.getNotes().get(k+1);
-				if(next.getChord()==true) {
+				while(next.getChord()==true && next.getNoteString()<=6) {
+					System.out.println("CHORD");
 					if(next.getFret()>=0 && next.getFret()<=9) a[next.getNoteString()-1] = (char) (next.getFret()+48);
 					else if(next.getFret()>=10 && next.getFret()<=20)	a[next.getNoteString()-1] = (char) (next.getFret()-10+39);
 					k++;
+					next = mea.getNotes().get(k+1);
 				}
 			}
 			catch(Exception E)
