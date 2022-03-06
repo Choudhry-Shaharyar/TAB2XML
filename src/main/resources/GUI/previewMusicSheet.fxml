@@ -30,7 +30,8 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                     </padding>
                   </HBox>
-                  <Button fx:id="saveMXLButton" disable="true" layoutX="820.0" layoutY="18.0" mnemonicParsing="false" onAction="#saveMXLButtonHandle" text="Save Sheet Music" />
+                  <Button fx:id="openAsPDF" disable="false" layoutX="855.0" layoutY="18.0" mnemonicParsing="false" onAction="#openAsPDFHandle" text="Open As PDF" />
+                  <Button fx:id="saveAsPDF1" disable="false" layoutX="731.0" layoutY="18.0" mnemonicParsing="false" onAction="#saveAsPDFHandle" text="Save As PDF" />
                     </children>
                 </AnchorPane>
             <TextArea fx:id="smText" layoutX="23.0" layoutY="30.0" prefHeight="200.0" prefWidth="954.0" />

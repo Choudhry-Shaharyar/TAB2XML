@@ -114,4 +114,9 @@ public class partToString {
 	public String getString() {
 		return line1+"\n"+line2+"\n"+line3+"\n"+line4+"\n"+line5+"\n"+line6;
 	}
+	
+	public String[] getStringArr() {
+		String arr[] = {line1,line2,line3,line4,line5,line6};
+		return arr;
+	}
 }

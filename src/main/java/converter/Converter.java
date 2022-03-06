@@ -35,12 +35,22 @@ public class Converter {
 	public List<ValidationError> validate() {
 		return score.validate();
 	}
+	
     public void saveMusicXMLFile(File file) {
         try {
             PrintWriter writer;
             writer = new PrintWriter(file);
             writer.println(mxlc.generateMusicXML());
             writer.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public void saveSMFile(File file, String x[]) {
+        try {
+        	System.out.println(file.getAbsolutePath());
+        	PDFUtilities.pdfutilities.build(x,file.getAbsolutePath());
         } catch (IOException ex) {
             ex.printStackTrace();
         }

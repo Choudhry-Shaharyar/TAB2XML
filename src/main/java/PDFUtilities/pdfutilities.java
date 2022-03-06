@@ -21,11 +21,11 @@ public final class pdfutilities
     	PDPage blankPage = new PDPage();
     	document.addPage(blankPage);
     	System.out.println(System.getProperty("user.dir"));
-    	document.save("src//main//resources//pdfutilities//BlankPage.pdf");
+    	document.save("src\\main\\resources//BlankPage.pdf");
     	document.close();
     }
     
-    public static void createPage(String file, String message, String pfbPath) throws IOException {
+    public static void createPage(String file, String message[], String pfbPath) throws IOException {
         
         try (PDDocument doc = new PDDocument())
         {
@@ -35,15 +35,19 @@ public final class pdfutilities
             PDType0Font font;
             try (InputStream is = new FileInputStream(pfbPath))
             {
-                font = PDType0Font.load(doc, new File("src//main//resources\\fonts\\lasolsi_not.ttf"));
+                font = PDType0Font.load(doc, new File("src\\main\\Resources\\fonts\\TABMusic.ttf"));
             }
 
             try (PDPageContentStream contents = new PDPageContentStream(doc, page))
             {
                 contents.beginText();
-                contents.setFont(font, 72);
-                contents.newLineAtOffset(100, 700);
-                contents.showText(message);
+                contents.setFont(font, 12);
+                contents.newLineAtOffset(25, 700);
+                contents.setLeading(14.5f);
+                for(String l:message) {
+                	contents.showText(l);
+                	contents.newLine();   
+                }
                 contents.endText();
             }
 
@@ -51,23 +55,19 @@ public final class pdfutilities
         }
     }
     
-    public static void openFile(String path) throws IOException {
-    	File x = new File(path);
-    	if (x.exists()) {
-    		if(Desktop.isDesktopSupported()) {
-    			Desktop.getDesktop().open(x);
-    		}
-    		else throw new IOException("DesktopAPI not supported on your Operating System");
-    	}
-    	else throw new IOException("File Not Fount");
-    }
-    
-    public static void start() throws IOException
+    public static void build(String[] text) throws IOException
     {
         createPDF();
-        createPage("src//main//resources//pdfutilities//Sheet-Music.pdf","Hello Everyone","src//main//resources//pdfutilities//BlankPage.pdf");
+        createPage("src\\main\\Resources//Sheet-Music.pdf",text,"src\\main\\Resources//BlankPage.pdf");
         //newLine();
-        openFile("src//main//resources//pdfutilities//Sample-Sheet-Music.pdf");
+        Desktop.getDesktop().open(new File("src\\main\\Resources//Sheet-Music.pdf"));
+        
+    }
+    
+    public static void build(String[] text, String path) throws IOException
+    {
+        createPDF();
+        createPage(path,text,"src\\main\\Resources//BlankPage.pdf");
         
     }
 }

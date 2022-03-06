@@ -47,6 +47,7 @@ import utility.Settings;
 
 //Parser and Player Modules
 import Components.*;
+import PDFUtilities.pdfutilities;
 import XMLPlayer.*;
 import Parser.*;
 import SMWriter.partToString;
@@ -60,7 +61,9 @@ public class MainViewController extends Application {
 	
 	public Window convertWindow;
 	public Window settingsWindow;
-
+	
+	public partToString SMDraw;
+	
 	public Highlighter highlighter;
 	public Converter converter;
 
@@ -182,7 +185,7 @@ public class MainViewController extends Application {
 			fileChooser.setInitialFileName(saveFile.getName());
 			fileChooser.setInitialDirectory(new File(saveFile.getParent()));
 		}
-
+		
 		File newSaveFile = fileChooser.showSaveDialog(MainApp.STAGE);
 		if (newSaveFile==null) return false;
 		try {
@@ -312,6 +315,23 @@ public class MainViewController extends Application {
 			logger.log(Level.SEVERE, "Failed to create new Window.", e);
 		}
 	}
+	
+	@FXML
+	void saveSMButtonHandle() {
+		Parent root;
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("GUI/saveSMWindow.fxml"));
+			root = loader.load();
+			SaveSMController controller = loader.getController();
+			controller.setContent(SMDraw.getStringArr());
+			controller.setMainViewController(this);
+			convertWindow = this.openNewWindow(root, "Save Sheet Music PDF");
+		} catch (IOException e) {
+			Logger logger = Logger.getLogger(getClass().getName());
+			logger.log(Level.SEVERE, "Failed to create new Window.", e);
+		}
+	}
+	
 	@FXML
 	private void previewButtonHandle() throws IOException {
 		Parent root;
@@ -320,14 +340,13 @@ public class MainViewController extends Application {
 		ShowSMController controller = loader.getController();
 		controller.setMainViewController(this);
 		controller.update();
+		SMDraw = controller.getContent();
 		openNewWindow(root,  "Preview Sheet Music"); 
 	}
 
 	@FXML
 	private void previewMusicPlayer() throws IOException {
 		if(mainText.getText().strip().equals("")) {
-			System.out.println("EMPTY CODE");
-//            JOptionPane.showMessageDialog(null, "Please enter valid music tab");
 			Alert alert = new Alert(Alert.AlertType.WARNING);
 			alert.initStyle(StageStyle.UTILITY);
 			alert.setTitle("No Input");

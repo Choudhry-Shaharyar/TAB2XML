@@ -3,10 +3,13 @@ package GUI;
 import java.io.File;
 import java.io.IOException;
 
+import PDFUtilities.pdfutilities;
 import Parser.Parser;
 import SMWriter.partToString;
 import javafx.application.Application;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.text.Font;
@@ -17,6 +20,7 @@ public class ShowSMController extends Application {
 	public File saveFile;
     private MainViewController mvc;
 	public Highlighter highlighter;
+	private partToString x;
 
 	@FXML public TextArea smText;
 	@FXML public ScrollPane scPane;
@@ -35,7 +39,7 @@ public class ShowSMController extends Application {
     public void update() throws IOException {
 		Parser par = new Parser(mvc.converter.getMusicXML());
 		par.createParts();
-		partToString x = new partToString(par.getPart());
+		x = new partToString(par.getPart());
 		x.generateString();
 		Font custom = Font.loadFont("file:src/main/resources/fonts/TABMusic.otf", 20);
 		smText.setFont(custom);
@@ -45,11 +49,19 @@ public class ShowSMController extends Application {
 	}
     
 	@FXML
-	private void saveMXLButtonHandle() {
-		mvc.saveMXLButtonHandle();
+	private void openAsPDFHandle() throws IOException {
+		pdfutilities.build(x.getStringArr());
 	}
 
+	@FXML
+	private void saveAsPDFHandle() throws IOException {
+		mvc.saveSMButtonHandle();
+	}
     
 	@Override
 	public void start(Stage primaryStage) throws Exception {}
+
+	public partToString getContent() {
+		return x;
+	}
 }
