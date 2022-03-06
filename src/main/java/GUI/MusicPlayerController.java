@@ -26,7 +26,7 @@ public class MusicPlayerController extends Application {
 
 
 	@FXML  Button playMusic;
-	@FXML  Button stopMusic;
+//	@FXML  Button stopMusic;
 	@FXML  Button goBackMeasure;
 	@FXML  Button goForwardMeasure;
 	@FXML  Button pauseAndPlay;
@@ -65,10 +65,10 @@ public class MusicPlayerController extends Application {
 		
 
 	}
-	@FXML
-	private void pauseMusic() throws IOException {
-		System.out.println("pause Button Clicked!");
-	}
+//	@FXML
+//	private void pauseMusic() throws IOException {
+//		System.out.println("pause Button Clicked!");
+//	}
 	@FXML
 	private void pauseAndPlayMusic() throws IOException {
 		System.out.println("pause/play Button Clicked!");

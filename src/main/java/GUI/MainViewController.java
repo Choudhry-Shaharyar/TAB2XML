@@ -15,6 +15,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.prefs.Preferences;
 
+import javax.swing.JOptionPane;
+
 import org.fxmisc.richtext.CodeArea;
 import org.fxmisc.richtext.LineNumberFactory;
 import org.fxmisc.richtext.model.StyleSpans;
@@ -316,8 +318,10 @@ public class MainViewController extends Application {
 
 	@FXML
 	private void previewMusicPlayer() throws IOException {
-		System.out.println("Preview Button Clicked!");
+		if(mainText.getText().equals("")) {
+			JOptionPane.showMessageDialog(null, "Please enter valid music tab");
 
+		} else {
 		Parent root;
 			FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("GUI/MusicPlayer.fxml"));
 			root = loader.load();
@@ -325,6 +329,7 @@ public class MainViewController extends Application {
 			controller.setMainViewController(this);
 			controller.update();
 			openNewWindow(root,  "Music Player");
+		}
 	}
 
 	public void refresh() {
@@ -388,6 +393,7 @@ public class MainViewController extends Application {
                 	saveMXLButton.setDisable(false);
                 	previewButton.setDisable(false);
                 	showMXLButton.setDisable(false);
+
                 }
                 return highlighter.computeHighlighting(text);
             }

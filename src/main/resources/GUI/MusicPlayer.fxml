@@ -27,11 +27,7 @@
                               <Insets left="250.0" top="30.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="stopMusic" mnemonicParsing="false" onAction="#pauseMusic" text="Stop">
-                           <HBox.margin>
-                              <Insets left="20.0" top="30.0" />
-                           </HBox.margin>
-                        </Button>
+                       
                      </children>
                      <opaqueInsets>
                         <Insets />
