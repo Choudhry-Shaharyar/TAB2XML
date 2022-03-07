@@ -1,0 +1,7 @@
+@font-face {
+    src: url('src/main/resources/fonts/lasolsi_not.ttf');
+}
+
+#text {
+    -fx-font-family: url(src/main/resources/font/TABMusic.otf);
+}
