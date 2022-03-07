@@ -21,7 +21,7 @@ public final class pdfutilities
     	PDPage blankPage = new PDPage();
     	document.addPage(blankPage);
     	System.out.println(System.getProperty("user.dir"));
-    	document.save("src\\main\\resources//BlankPage.pdf");
+    	document.save("src\\main\\resources//pdfutilities//BlankPage.pdf");
     	document.close();
     }
     
@@ -58,16 +58,16 @@ public final class pdfutilities
     public static void build(String[] text) throws IOException
     {
         createPDF();
-        createPage("src\\main\\Resources//Sheet-Music.pdf",text,"src\\main\\Resources//BlankPage.pdf");
+        createPage("src\\main\\Resources//pdfutilities//Sheet-Music.pdf",text,"src\\main\\Resources//pdfutilities//BlankPage.pdf");
         //newLine();
-        Desktop.getDesktop().open(new File("src\\main\\Resources//Sheet-Music.pdf"));
+        Desktop.getDesktop().open(new File("src\\main\\Resources//pdfutilities//Sheet-Music.pdf"));
         
     }
     
     public static void build(String[] text, String path) throws IOException
     {
         createPDF();
-        createPage(path,text,"src\\main\\Resources//BlankPage.pdf");
+        createPage(path,text,"src\\main\\Resources//pdfutilities//BlankPage.pdf");
         
     }
 }
