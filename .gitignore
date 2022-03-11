@@ -9,3 +9,4 @@ build
 /lib/.project
 /.settings/org.eclipse.jdt.core.prefs
 /output.txt
+/src/main/resources/pdfutilities/Sheet-Music.pdf

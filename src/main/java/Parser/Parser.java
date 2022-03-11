@@ -42,7 +42,14 @@ public class Parser {
 
         List<Element> measureTagsList = partTag.getChildren("measure");
 
+
+        Element partListTag = rootTag.getChild("part-list");
+        Element scorePartTag = partListTag.getChild("score-part");
+        Element partNameTag = scorePartTag.getChild("part-name");
+
         wPart wPartOne = new wPart(partTag.getAttributeValue("id"));
+        wPartOne.setInstrument(partNameTag.getValue());
+
         ArrayList<wMeasure> wMeasureList = new ArrayList<>();
         for (int i = 0; i < measureTagsList.size(); i++)
         {

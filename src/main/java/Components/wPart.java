@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class wPart {
     String id;
     ArrayList<wMeasure> wMeasureList = new ArrayList<>();
+    String instrument;
 
     public wPart(String name)
     {
@@ -21,9 +22,16 @@ public class wPart {
         this.wMeasureList = wMeasureList;
     }
 
+    public String getInstrument() {
+        return instrument;
+    }
+
+    public void setInstrument(String instrument) {
+        this.instrument = instrument;
+    }
     public String toString()
     {
-        String heading = "Part: " + this.id + "\n \n";
+        String heading = "Part: " + this.id + " with instrument" + this.instrument + "\n \n";
         String content = "";
 
         for(int i = 0; i < wMeasureList.size(); i++)
