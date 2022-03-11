@@ -13,6 +13,9 @@ public class wNote {
     int noteString;
     int fret;
 
+    String stem;
+    String noteHead;
+
     public wNote()
     {
     }
@@ -92,6 +95,22 @@ public class wNote {
         return this.fret;
     }
 
+    public String getStem() {
+        return stem;
+    }
+
+    public void setStem(String stem) {
+        this.stem = stem;
+    }
+
+    public String getNoteHead() {
+        return noteHead;
+    }
+
+    public void setNoteHead(String noteHead) {
+        this.noteHead = noteHead;
+    }
+
     public String toString()
     {
         String content = "== \n";
@@ -104,6 +123,8 @@ public class wNote {
         content += "Type: " + this.type + "\n";
         content += "note String: " + this.noteString + "\n";
         content += "Fret: " + this.fret + "\n";
+        content += "Stem: " + this.stem + "\n";
+        content += "Notehead: " + this.noteHead + "\n";
         content += "== \n";
 
         return content;

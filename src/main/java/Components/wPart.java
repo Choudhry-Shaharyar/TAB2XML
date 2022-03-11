@@ -31,7 +31,7 @@ public class wPart {
     }
     public String toString()
     {
-        String heading = "Part: " + this.id + " with instrument" + this.instrument + "\n \n";
+        String heading = "Part: " + this.id + " with instrument " + this.instrument + "\n \n";
         String content = "";
 
         for(int i = 0; i < wMeasureList.size(); i++)

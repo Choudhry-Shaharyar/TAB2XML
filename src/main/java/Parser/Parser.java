@@ -64,10 +64,15 @@ public class Parser {
             int divisions = Integer.parseInt(divisionsTag.getValue());
             newWMeasure.setDivisions(divisions);
 
-            Element keyTag = attributesTag.getChild("key");
-            Element fifthsTag = keyTag.getChild("fifths");
-            int keyFifths = Integer.parseInt( fifthsTag.getValue() );
-            newWMeasure.setKey(keyFifths);
+            try
+            {
+                Element keyTag = attributesTag.getChild("key");
+                Element fifthsTag = keyTag.getChild("fifths");
+                int keyFifths = Integer.parseInt( fifthsTag.getValue() );
+                newWMeasure.setKey(keyFifths);
+            }
+            catch(Exception e){}
+
 
             try
             {
@@ -118,11 +123,23 @@ public class Parser {
                 }
                 catch (Exception e){}
 
-                Element pitchTag = noteTag.getChild("pitch");
-                Element stepTag = pitchTag.getChild("step");
-                Element octaveTag = pitchTag.getChild("octave");
-                int pitchOctave = Integer.parseInt( octaveTag.getValue() );
-                newWNote.setPitch(stepTag.getValue(), pitchOctave);
+                try {
+                    Element pitchTag = noteTag.getChild("pitch");
+                    Element stepTag = pitchTag.getChild("step");
+                    Element octaveTag = pitchTag.getChild("octave");
+                    int pitchOctave = Integer.parseInt(octaveTag.getValue());
+                    newWNote.setPitch(stepTag.getValue(), pitchOctave);
+                }
+                catch (Exception e){}
+
+                try {
+                    Element unpitchedTag = noteTag.getChild("unpitched");
+                    Element displayStepTag = unpitchedTag.getChild("display-step");
+                    Element displayOctaveTag = unpitchedTag.getChild("display-octave");
+                    int pitchOctave = Integer.parseInt(displayOctaveTag.getValue());
+                    newWNote.setPitch(displayStepTag.getValue(), pitchOctave);
+                }
+                catch (Exception e){}
 
                 try
                 {
@@ -160,6 +177,20 @@ public class Parser {
                     newWNote.setNoteString(Integer.parseInt(noteString));
                     newWNote.setFret(Integer.parseInt(fret));
 
+                }
+                catch (Exception e){}
+
+                try
+                {
+                    Element stemTag = noteTag.getChild("stem");
+                    newWNote.setStem(stemTag.getValue());
+                }
+                catch (Exception e){}
+
+                try
+                {
+                    Element noteHeadTag = noteTag.getChild("notehead");
+                    newWNote.setNoteHead(noteHeadTag.getValue());
                 }
                 catch (Exception e){}
 
